@@ -30,10 +30,12 @@
 ## Скриншоты
 
 ### Темная тема
-![Task Manager Dark](src/assets/screendark.png)
+
+![Task Manager Dark](src/assets/screen-dark.png)
 
 ### Светлая тема
-![Task Manager Light](src/assets/screenlight.png)
+
+![Task Manager Light](src/assets/screen-light.png)
 
 ## Запуск локально
 
