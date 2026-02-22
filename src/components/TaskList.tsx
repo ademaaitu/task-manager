@@ -76,7 +76,7 @@ export function TaskList() {
 
     const newTasks = arrayMove(allTasks, oldIndex, newIndex);
 
-    newTasks.forEach((task, index) => {
+    newTasks.forEach((task) => {
       updateTask(task.id, { ...task });
     });
   };
@@ -84,29 +84,28 @@ export function TaskList() {
   if (tasks.length === 0) {
     return (
       <div className="text-center py-16 text-gray-400 dark:text-gray-500">
-        <p className="text-5xl mb-4">📭</p>
         <p className="text-lg font-medium">Задач нет</p>
         <p className="text-sm mt-1">Добавьте первую задачу выше</p>
       </div>
     );
-
-    return (
-      <DndContext
-        sensors={sensors}
-        collisionDetection={closestCenter}
-        onDragEnd={handleDragEnd}
-      >
-        <SortableContext
-          items={tasks.map((t) => t.id)}
-          strategy={verticalListSortingStrategy}
-        >
-          <div className="space-y-3">
-            {tasks.map((task) => (
-              <SortableTaskItem key={task.id} task={task} />
-            ))}
-          </div>
-        </SortableContext>
-      </DndContext>
-    );
   }
+
+  return (
+    <DndContext
+      sensors={sensors}
+      collisionDetection={closestCenter}
+      onDragEnd={handleDragEnd}
+    >
+      <SortableContext
+        items={tasks.map((t) => t.id)}
+        strategy={verticalListSortingStrategy}
+      >
+        <div className="space-y-3">
+          {tasks.map((task) => (
+            <SortableTaskItem key={task.id} task={task} />
+          ))}
+        </div>
+      </SortableContext>
+    </DndContext>
+  );
 }

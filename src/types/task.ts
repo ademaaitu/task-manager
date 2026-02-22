@@ -6,6 +6,9 @@ export type SortField = "priority" | 'title' | "createdAt"
 
 export type SortBy = 'asc' | 'desc'
 
+export type PriorityAll = 'all' | "low" | "medium" | "high";
+
+
 export interface Task {
     id: string,
     title: string,

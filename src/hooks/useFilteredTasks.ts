@@ -6,7 +6,7 @@ export function useFilteredTasks() {
   const filters = useTaskStore((state) => state.filters);
 
   const filtered = filterTasks(tasks, filters);
-  const sorted = sortTasks(tasks, filters);
+  const sorted = sortTasks(filtered, filters);
   const activeCount = countActiveTasks(tasks);
 
   return {

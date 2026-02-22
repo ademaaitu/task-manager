@@ -1,6 +1,6 @@
 import { useTaskStore } from "../store/taskStore";
 import { useFilteredTasks } from "../hooks/useFilteredTasks";
-
+import type { FilterStatus, PriorityAll, SortField } from "../types/task";
 function FilterBar() {
   const setFilters = useTaskStore((state) => state.setFilters);
   const resetFilters = useTaskStore((state) => state.resetFilters);
@@ -9,9 +9,10 @@ function FilterBar() {
 
   return (
     <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 border border-gray-100 dark:border-gray-700 space-y-4">
-      <div className="flex items-center justify-center">
-        <h2 className="text-xl font-bold text-gray-800 dark:text-white">
-          📋 My Tasks
+      <div className="flex items-center justify-center gap-2">
+        {/* <BiTask colo size={30} /> */}
+        <h2 className="text-xl font-bold text-gray-800 dark:text-white mr-2">
+          My Tasks{" "}
         </h2>
         <div className="flex gap-2 text-sm">
           <span className="px-3 py-1 bg-primary-100 dark:bg-primary-700 text-primary-700 dark:text-primary-100 rounded-full font-medium">
@@ -32,7 +33,9 @@ function FilterBar() {
       <div className="flex flex-wrap gap-3">
         <select
           value={filters.status}
-          onChange={(e) => setFilters({ status: e.target.value as any })}
+          onChange={(e) =>
+            setFilters({ status: e.target.value as FilterStatus })
+          }
           className="flex-1  px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
         >
           <option value="all"> All tasks</option>
@@ -41,17 +44,21 @@ function FilterBar() {
         </select>
         <select
           value={filters.priority}
-          onChange={(e) => setFilters({ priority: e.target.value as any })}
+          onChange={(e) =>
+            setFilters({ priority: e.target.value as PriorityAll })
+          }
           className="flex-1  px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
         >
           <option value="all"> All priorities</option>
-          <option value="low"> 🟢 Low</option>
-          <option value="medium"> 🟡 Meduim</option>
-          <option value="high"> 🔴 High</option>
+          <option value="low">Low</option>
+          <option value="medium"> Meduim</option>
+          <option value="high">High</option>
         </select>
         <select
           value={filters.sortField}
-          onChange={(e) => setFilters({ sortField: e.target.value as any })}
+          onChange={(e) =>
+            setFilters({ sortField: e.target.value as SortField })
+          }
           className="flex-1  px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
         >
           <option value="createdAt"> By date</option>

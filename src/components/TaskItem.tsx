@@ -1,24 +1,24 @@
 import { useState } from "react";
 import { useTaskStore } from "../store/taskStore";
 import type { Priority, Task } from "../types/task";
-
+import { BiEdit, BiTrash } from "react-icons/bi";
 interface TaskItemProps {
   task: Task;
 }
 
 const PRIORITY_CONFIG: Record<Priority, { label: string; classes: string }> = {
   low: {
-    label: "🟢 Low",
+    label: "Low",
     classes:
       "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300",
   },
   medium: {
-    label: "🟡 Medium",
+    label: "Medium",
     classes:
       "bg-red-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300",
   },
   high: {
-    label: "🔴 High",
+    label: "High",
     classes: "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300",
   },
 };
@@ -70,7 +70,7 @@ export function TaskItem({ task }: TaskItemProps) {
               type="checkbox"
               checked={task.completed}
               onChange={() => toggleTask(task.id)}
-              className="mt-1 w-4 h-4 accent-primary-500 cursor-pointer"
+              className="mt-1 w-4 h-4 accent-primary-500 cursor-pointer mr-4"
             />
             <div className="flex-1 min w-0">
               <p
@@ -102,7 +102,7 @@ export function TaskItem({ task }: TaskItemProps) {
               hover:text-primary-500 hover:bg-primary-50
                dark:hover:bg-gray-700 transition-colors"
               >
-                ✏️
+                <BiEdit />
               </button>
               <button
                 onClick={handleDelete}
@@ -110,7 +110,7 @@ export function TaskItem({ task }: TaskItemProps) {
               hover:text-red-500 hover:bg-red-50
                dark:hover:bg-gray-700 transition-colors"
               >
-                🗑️
+                <BiTrash />
               </button>
             </div>
           </div>
@@ -126,7 +126,7 @@ export function TaskItem({ task }: TaskItemProps) {
           />
           <textarea
             value={editDescription}
-            onChange={(e) => setEditTitle(e.target.value)}
+            onChange={(e) => setEditDescription(e.target.value)}
             className="w-full px-4 py-2 rounded-lg 
         border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white 
         focus:outline-none focus:ring-2 focus:ring-primary-500 resize-none"
@@ -138,11 +138,18 @@ export function TaskItem({ task }: TaskItemProps) {
         border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white 
         focus:outline-none focus:ring-2 focus:ring-primary-500"
           >
-            <option value="high">🚨 High priority</option>
-            <option value="medium">🧘 Medium priority</option>
-            <option value="low">🍃 Low priority</option>
+            <option value="high">High priority</option>
+            <option value="medium">Medium priority</option>
+            <option value="low">Low priority</option>
           </select>
           <div className="flex gap-2">
+            <button
+              onClick={handleSave}
+              className="flex-1 py-2 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-lg 
+            font-medium hover:bg-gray-200 transition-colors"
+            >
+              Save
+            </button>
             <button
               onClick={handleCancel}
               className="flex-1 py-2 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-lg 
