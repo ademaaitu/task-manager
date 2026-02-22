@@ -16,7 +16,7 @@ export function filterTasks(tasks: Task[], filters: Filters): Task[] {
 
     if (filters.search) {
       const search = filters.search.toLowerCase();
-      if (task.title.toLowerCase().includes(search)) return false;
+      if (!task.title.toLowerCase().includes(search)) return false;
     }
     return true;
   });
