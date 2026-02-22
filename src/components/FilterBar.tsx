@@ -10,7 +10,6 @@ function FilterBar() {
   return (
     <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 border border-gray-100 dark:border-gray-700 space-y-4">
       <div className="flex items-center justify-center gap-2">
-        {/* <BiTask colo size={30} /> */}
         <h2 className="text-xl font-bold text-gray-800 dark:text-white mr-2">
           My Tasks{" "}
         </h2>
