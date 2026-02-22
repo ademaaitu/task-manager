@@ -3,7 +3,11 @@ import { BiMoon, BiSun } from "react-icons/bi";
 
 export function ThemeToggle() {
   const [isDark, setIsDark] = React.useState(() => {
-    return localStorage.getItem("theme") === "dark";
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      return savedTheme === "dark"; // если есть сохранённая тема, используем её
+    }
+    return true; // если нет сохранённой темы — по умолчанию включаем тёмную
   });
   React.useEffect(() => {
     const root = document.documentElement;
