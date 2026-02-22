@@ -32,7 +32,7 @@
 ### Темная тема
 ![Task Manager Dark](src/assets/screendark.png)
 
-### Темная тема
+### Светлая тема
 ![Task Manager Light](src/assets/screenlight.png)
 
 ## Запуск локально
