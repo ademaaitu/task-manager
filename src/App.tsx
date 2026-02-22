@@ -10,7 +10,7 @@ export default function App() {
         className="bg-white dark:bg-gray-800 shadow-sm
       border-b border-gray-200 dark:border-gray-700"
       >
-        <div className="max-w-3xl mx-auto px-4 py-4 flex items-center justify-between">
+        <div className="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
           <div>
             <h1 className="text-2xl font-bold text-gray-800 dark:text-white">
               Task Manager
@@ -23,9 +23,11 @@ export default function App() {
         </div>
       </header>
 
-      <main className="max-w-3xl mx-auto px-4 py-8 space-y-6">
-        <TaskForm />
-        <FilterBar />
+      <main className="max-w-5xl mx-auto px-4 py-8 space-y-6">
+        <div className="flex gap-2">
+          <TaskForm />
+          <FilterBar />
+        </div>
         <TaskList />
       </main>
       <footer className="text-center py-6 text-sm text-gray-400 dark:text-gray-600"></footer>

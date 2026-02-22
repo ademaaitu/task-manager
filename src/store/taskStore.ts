@@ -6,7 +6,7 @@ const defaultFilters: Filters = {
   status: "all",
   priority: "all",
   search: "",
-  sortField: "createdAt",
+  sortField: "manual",
   sortBy: "desc",
 };
 interface TaskStore {
@@ -20,6 +20,7 @@ interface TaskStore {
 
   setFilters: (filters: Partial<Filters>) => void;
   resetFilters: () => void;
+  reorderTasks: (tasks: Task[]) => void;
 }
 
 export const useTaskStore = create<TaskStore>()(
@@ -57,12 +58,13 @@ export const useTaskStore = create<TaskStore>()(
             tk.id === id ? { ...tk, completed: !tk.completed } : tk,
           ),
         })),
-        
+
       setFilters: (filters) =>
         set((state) => ({
           filters: { ...state.filters, ...filters },
         })),
       resetFilters: () => set({ filters: defaultFilters }),
+      reorderTasks: (tasks) => set({ tasks }),
     }),
     { name: "task-storage" },
   ),

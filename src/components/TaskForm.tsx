@@ -44,7 +44,7 @@ export function TaskForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 animate-fade-in border border-gray-100 dark:border-gray-700"
+      className=" w-full bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 animate-fade-in border border-gray-100 dark:border-gray-700"
     >
       <h2 className="text-xl font-bold text-gray-800 dark:text-white mb-4">
         New task
@@ -76,15 +76,9 @@ export function TaskForm() {
           {...register("priority")}
           className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
         >
-          <option value="high">
-             High priority
-          </option>
-          <option value="medium">
-             Medium priority
-          </option>
-          <option value="low">
-            Low priority
-          </option>
+          <option value="high">High priority</option>
+          <option value="medium">Medium priority</option>
+          <option value="low">Low priority</option>
         </select>
       </div>
       <button

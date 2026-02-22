@@ -136,6 +136,7 @@ interface TaskStore {
   deleteTask: (id: string) => void;
   updateTask: (id: string, task: Partial<Task>) => void;
   toggleTask: (id: string) => void;
+  
 }
 
 export const useTaskStore = create<TaskStore>()(

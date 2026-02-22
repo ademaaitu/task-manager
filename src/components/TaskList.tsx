@@ -41,6 +41,7 @@ function SortableTaskItem({ task }: { task: Task }) {
       style={style}
       className={isDragging ? "opacity-50 z-50" : ""}
     >
+      {" "}
       <div
         {...attributes}
         {...listeners}
@@ -57,7 +58,6 @@ function SortableTaskItem({ task }: { task: Task }) {
 export function TaskList() {
   const { tasks } = useFilteredTasks();
   const { tasks: allTasks } = useTaskStore();
-  const updateTask = useTaskStore((state) => state.updateTask);
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -65,25 +65,27 @@ export function TaskList() {
       coordinateGetter: sortableKeyboardCoordinates,
     }),
   );
+  const reorderTasks = useTaskStore((s) => s.reorderTasks);
+
+  const setFilters = useTaskStore((s) => s.setFilters);
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
-
     if (!over || active.id === over.id) return;
 
     const oldIndex = allTasks.findIndex((t) => t.id === active.id);
     const newIndex = allTasks.findIndex((t) => t.id === over.id);
 
     const newTasks = arrayMove(allTasks, oldIndex, newIndex);
+    reorderTasks(newTasks);
 
-    newTasks.forEach((task) => {
-      updateTask(task.id, { ...task });
-    });
+    setFilters({ sortField: "manual" }); // ← ВАЖНО
   };
 
   if (tasks.length === 0) {
     return (
       <div className="text-center py-16 text-gray-400 dark:text-gray-500">
+        <p className="text-5xl mb-4">📭</p>
         <p className="text-lg font-medium">Задач нет</p>
         <p className="text-sm mt-1">Добавьте первую задачу выше</p>
       </div>

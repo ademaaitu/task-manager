@@ -23,6 +23,7 @@ export function filterTasks(tasks: Task[], filters: Filters): Task[] {
 }
 
 export function sortTasks(tasks: Task[], filters: Filters): Task[] {
+  if (filters.sortField === "manual") return tasks;
   return [...tasks].sort((a, b) => {
     if (filters.sortField === "createdAt") {
       return filters.sortBy === "desc"
@@ -45,6 +46,6 @@ export function sortTasks(tasks: Task[], filters: Filters): Task[] {
   });
 }
 
-export function countActiveTasks(tasks: Task[]):number{
-    return tasks.filter((tk) => !tk.completed).length;
+export function countActiveTasks(tasks: Task[]): number {
+  return tasks.filter((tk) => !tk.completed).length;
 }

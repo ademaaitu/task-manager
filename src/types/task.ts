@@ -2,7 +2,7 @@ export type Priority = 'low' | 'medium' | 'high'
 
 export type FilterStatus = 'all' | 'active' | 'completed'
 
-export type SortField = "priority" | 'title' | "createdAt"
+export type SortField = "priority" | 'title' | "createdAt" | 'manual'
 
 export type SortBy = 'asc' | 'desc'
 
