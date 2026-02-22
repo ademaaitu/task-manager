@@ -41,9 +41,6 @@
 # Клонировать репозиторий
 git clone https://github.com/ademaaitu/task-manager.git
 
-# Перейти в папку
-cd название-репозитория
-
 # Установить зависимости
 npm install
 
