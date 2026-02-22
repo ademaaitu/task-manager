@@ -1,6 +1,6 @@
 export type Priority = 'low' | 'medium' | 'high'
 
-export type FilterStatus = 'all' | 'active' | 'complleted'
+export type FilterStatus = 'all' | 'active' | 'completed'
 
 export type SortField = "priority" | 'title' | "createdAt"
 
