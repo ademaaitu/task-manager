@@ -1,4 +1,3 @@
-import React from "react";
 import { useTaskStore } from "../store/taskStore";
 import { useFilteredTasks } from "../hooks/useFilteredTasks";
 
@@ -19,7 +18,7 @@ function FilterBar() {
             Active: {activeCount}
           </span>
           <span className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full font-medium">
-            Total: {activeCount}
+            Total: {totalCount}
           </span>
         </div>
       </div>

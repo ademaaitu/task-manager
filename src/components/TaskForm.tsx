@@ -76,8 +76,8 @@ export function TaskForm() {
           {...register("priority")}
           className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
         >
-          <option value="low">🚨 High priority</option>
-          <option value="low">🧘 Medium priority</option>
+          <option value="high">🚨 High priority</option>
+          <option value="medium">🧘 Medium priority</option>
           <option value="low">🍃 Low priority</option>
         </select>
       </div>
